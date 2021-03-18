@@ -130,7 +130,23 @@ Rule
 - Numbers / Operators / Orders
     - Store in **Heap** (`malloc`)
 
-
-
-
 Test: https://onlinegdb.com/BJHmN8lNd
+
+
+## Implementation
+
+### What do I need?
+
+
+- Package
+    - Stack in Heap
+        - Allow big storage
+
+    - String Parser
+        - Get `+-*/`
+        - Get Numbers
+    - Equation Eval
+
+- Algorithm
+    - Arithmatic Operation
+        - In `Equation Eval`
