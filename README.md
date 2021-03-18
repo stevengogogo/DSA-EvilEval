@@ -154,3 +154,40 @@ Test: https://onlinegdb.com/BJHmN8lNd
 - Algorithm
     - Arithmatic Operation
         - In `Equation Eval`
+
+
+- Create test data
+    - `input.txt`
+    - `output.txt`
+
+### Test Data
+
+ To solve `test/data/input.txt` to `test/data/output.txt`. Set path to the top of the project.
+
+ ```bash
+ make DATA
+ ```
+
+#### File reader in Julia
+
+```julia
+julia> open("myfile.txt", "w") do io
+           write(io, "Hello world!")
+       end;
+
+julia> open(f->read(f, String), "myfile.txt")
+"Hello world!"
+```
+
+With `Formatter.jl` for formatting the scintific representation.
+
+#### Format of input/output
+
+|Input|Output|
+|:---:|:---:|
+|![](img/sample_input.png)|![](img/sample_output.png)|
+
+- Two `\n` for separate inputs
+- One `\n` for separate outputs
+
+

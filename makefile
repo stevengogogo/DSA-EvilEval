@@ -59,4 +59,5 @@ MERGE_MAIN:
 	$(CCm) $(src_folder)/main.c  build/main.c
 	$(CC) -o build/main_test_build.out build/main.c
 
-
+DATA:
+	julia test/EqualSolve.jl 
