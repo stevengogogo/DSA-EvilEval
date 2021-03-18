@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>C Project Template: Calculator</title>
+<title>C Project Template: EvilEval: Calculator in C (Parser)</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -62,17 +62,145 @@ $(function() {
 
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">Calculator </div>  </div>
+<div class="title">EvilEval: Calculator in C (Parser) </div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md_README"></a></p>
 <h1><a class="anchor" id="autotoc_md1"></a>
 Algorithm</h1>
 <p><img src="img/arithmetic_operation.png" alt="" class="inline"/></p>
-<h1><a class="anchor" id="autotoc_md2"></a>
-Range of Data Type</h1>
+<h2><a class="anchor" id="autotoc_md2"></a>
+Structure</h2>
 <ul>
-<li><code>Int</code>: -2147483648至2147483647</li>
+<li><code>Numbers</code></li>
+<li><code>Operators</code></li>
+<li><code>Orders</code></li>
+<li><code>Paranthesis counter</code></li>
+</ul>
+<h3><a class="anchor" id="autotoc_md3"></a>
+Definition</h3>
+<ul>
+<li>What is <code>Orders</code><ul>
+<li>The order to be evaluated in an equation</li>
+</ul>
+</li>
+</ul>
+<h3><a class="anchor" id="autotoc_md4"></a>
+Relation between &lt;tt&gt;Numbers&lt;/tt&gt; / &lt;tt&gt;Operators&lt;/tt&gt; / &lt;tt&gt;Orders&lt;/tt&gt;</h3>
+<ul>
+<li><code>length(Numbers)</code> = <code>length(Operators)</code> + 1<ul>
+<li>Ex. <code>2/4</code></li>
+</ul>
+</li>
+<li><code>Length(Operators)</code> = <code>Length(Orders)</code></li>
+</ul>
+<h2><a class="anchor" id="autotoc_md5"></a>
+Evaulation</h2>
+<div class="fragment"><div class="line"># Do a/b</div>
+<div class="line">b = pop(Numbers)</div>
+<div class="line">a = pop(Numbers)</div>
+<div class="line">op = pop(Operators)</div>
+<div class="line">pop(Orders)</div>
+<div class="line"> </div>
+<div class="line">r = eval(op, a, b) # div(a,b)</div>
+<div class="line"> </div>
+<div class="line">push(Numbers, r)</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md6"></a>
+Initiate an evalution</h2>
+<div class="fragment"><div class="line">op_new = read()</div>
+<div class="line">order_new = order_current  + order(op_new)</div>
+<div class="line">b_new = read()</div>
+<div class="line"> </div>
+<div class="line">if (Query(Orders) &lt; order_new) # Add to list</div>
+<div class="line">    push(Orders, order_new)</div>
+<div class="line">    push(Operators, op_new)</div>
+<div class="line">    push(Numbers, b_new)</div>
+<div class="line">else </div>
+<div class="line">    Do Evalution</div>
+</div><!-- fragment --><p> Length affected by single evalution</p>
+<h2><a class="anchor" id="autotoc_md7"></a>
+How to update order base &lt;tt&gt;()&lt;/tt&gt;</h2>
+<div class="fragment"><div class="line">order_base = 0</div>
+<div class="line"> </div>
+<div class="line">while (symbol != EOF)</div>
+<div class="line">    symbol = read_char()</div>
+<div class="line"> </div>
+<div class="line">    if symbol == `(`</div>
+<div class="line">        order_base += 2</div>
+<div class="line">    else if(symbol == `)`)</div>
+<div class="line">        order_base -= 2</div>
+<div class="line">    else </div>
+<div class="line">        Do Operation</div>
+<div class="line">end</div>
+</div><!-- fragment --><p>Rule</p><ol type="1">
+<li><code>Evaluate</code> when the incoming order is smaller than the end of the stack</li>
+</ol>
+<h1><a class="anchor" id="autotoc_md8"></a>
+String Operation</h1>
+<h2><a class="anchor" id="autotoc_md9"></a>
+Usage of &lt;tt&gt;fscanf&lt;/tt&gt;</h2>
+<h3><a class="anchor" id="autotoc_md10"></a>
+Return Value</h3>
+<ul>
+<li>Source: <a href="https://www.tutorialspoint.com/c_standard_library/c_function_fscanf.htm">TutorialPoint</a></li>
+</ul>
+<h1><a class="anchor" id="autotoc_md11"></a>
+Data Type and Range</h1>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Data Type   </th><th class="markdownTableHeadNone">Range   </th><th class="markdownTableHeadNone">Size    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>int</code>   </td><td class="markdownTableBodyNone">-2,147483648E9 to 2.147483647E9   </td><td class="markdownTableBodyNone">4 bytes    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>double</code>   </td><td class="markdownTableBodyNone">2.3E-308 to 1.7E+308   </td><td class="markdownTableBodyNone">8 bytes   </td></tr>
+</table>
+<p>|<code>Char</code>|1 Byte|</p>
+<ul>
+<li>Source: <a href="https://www.tutorialspoint.com/cprogramming/c_data_types.htm">TutorialPoint</a></li>
+</ul>
+<h1><a class="anchor" id="autotoc_md12"></a>
+Constraints</h1>
+<ul>
+<li>Maximum storage: <b>1GB</b></li>
+<li>Time limit: <b>1s</b></li>
+</ul>
+<h2><a class="anchor" id="autotoc_md13"></a>
+Number of parameters</h2>
+<h3><a class="anchor" id="autotoc_md14"></a>
+Input String Size</h3>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadCenter">Symbol   </th><th class="markdownTableHeadCenter">Description    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyCenter">$L$   </td><td class="markdownTableBodyCenter">length of a line    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyCenter">$T$   </td><td class="markdownTableBodyCenter">Lines   </td></tr>
+</table>
+<ul>
+<li>$L &lt; 10^6$<ul>
+<li>Maximum usage of memory<ul>
+<li>8MB</li>
+<li>RAM: 10 MB</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>$L\cdot T \leq 10^6$<ul>
+<li>1 MB</li>
+</ul>
+</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md15"></a>
+Strategy of storage</h2>
+<ul>
+<li>String<ul>
+<li>Store in <b>stack</b></li>
+</ul>
+</li>
+<li>Numbers / Operators / Orders<ul>
+<li>Store in <b>Heap</b> (<code>malloc</code>)</li>
+</ul>
+</li>
 </ul>
 <p>Test: <a href="https://onlinegdb.com/BJHmN8lNd">https://onlinegdb.com/BJHmN8lNd</a> </p>
 </div></div><!-- PageDoc -->

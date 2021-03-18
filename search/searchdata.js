@@ -1,10 +1,10 @@
 var indexSectionsWithContent =
 {
-  0: "cemu",
+  0: "emu",
   1: "e",
   2: "u",
   3: "m",
-  4: "c"
+  4: "e"
 };
 
 var indexSectionNames =
