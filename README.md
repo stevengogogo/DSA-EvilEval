@@ -81,9 +81,13 @@ Rule
 
 ## String Operation
 
+
 ### Usage of `fscanf`
 
 
+
+
+- Source: [Fun with “scanf” in c](https://medium.com/@zoha131/fun-with-scanf-in-c-3d7a8d310229)
 
 #### Return Value
 
