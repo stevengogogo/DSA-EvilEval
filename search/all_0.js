@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['cprojecttemplate_0',['CProjectTemplate',['../index.html',1,'']]]
+  ['calculator_0',['Calculator',['../index.html',1,'']]]
 ];
