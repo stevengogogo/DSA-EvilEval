@@ -1,20 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include "stack.h"
 #include "utils.h"
 
 int main()
 {
     
-    // newnumc("3434");
-    int a = 1;
-    int b = 3;
-    extm big;
-    //scanf("%s %s", a, b);
-    big = max(&a, &b);
+    int sd_size = 1000;
+    stack_double sd;
 
-    //bigint* I = newnumc(a[1]);
-    printf("Compare a(=%d) and b(=%d): maximum equals to %d\n",a,b,big.extreme);
+    init_stack_double(&sd, sd_size);
+    kill_stack_double(&sd);
 
     return 0;
 }

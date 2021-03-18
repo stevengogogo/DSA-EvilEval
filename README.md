@@ -160,6 +160,62 @@ Test: https://onlinegdb.com/BJHmN8lNd
     - `input.txt`
     - `output.txt`
 
+
+### Stack 
+
+Use `Array` to implement a stack
+
+### What data type we need?
+
+- Stack for `double`: `Numbers`
+- Stack for `int`: `Orders`
+- Stack for `enum`: `Operators`
+
+[*Tutorial for `enum`*](https://michaelchen.tech/c-programming/enumeration/)
+
+#### Structure of a stack
+```pseudo
+structure stack:
+    maxsize : integer
+    top : integer
+    items : array of item
+```
+
+#### Procedures
+
+##### Initiation 
+
+```pseudo
+procedure initialize(stk : stack, size : integer):
+    stk.items ← new array of size items, initially empty
+    stk.maxsize ← size
+    stk.top ← 0
+```
+
+##### Push
+
+```pseudo
+procedure push(stk : stack, x : item):
+    if stk.top = stk.maxsize:
+        report overflow error
+    else:
+        stk.items[stk.top] ← x
+        stk.top ← stk.top + 1
+```
+
+##### Pop
+
+```pseudo
+procedure pop(stk : stack):
+    if stk.top = 0:
+        report underflow error
+    else:
+        stk.top ← stk.top − 1
+        r ← stk.items[stk.top]
+        return r
+```
+
+
 ### Test Data
 
  To solve `test/data/input.txt` to `test/data/output.txt`. Set path to the top of the project.
@@ -191,3 +247,47 @@ With `Formatter.jl` for formatting the scintific representation.
 - One `\n` for separate outputs
 
 
+---
+
+## Notes of C language
+
+### enum
+
+```c
+/* Foreward declaration. */
+typedef enum direction Direction;
+
+enum direction {
+    North,
+    South,
+    East,
+    West
+};
+
+int main(void)
+{
+    Direction dest = East;
+    
+    return 0;
+}
+```
+
+### How to create a struct with element stored in heap
+
+The struct have to be created in stack and use the pointer to heap.
+
+#### Struct
+```c
+struct a;
+int maxsize;
+init_stack_double(&a, maxsize);
+```
+
+#### Initiation
+```c
+void init_stack_double(stack_double* sd, int maxsize){
+    sd->items = (double*)malloc(maxsize*sizeof(double));
+    sd->maxsize = maxsize;
+    sd->top = 0;
+}
+```
