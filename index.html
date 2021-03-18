@@ -226,11 +226,41 @@ What do I need?</h2>
 </li>
 <li>Algorithm<ul>
 <li>Arithmatic Operation<ul>
-<li>In <code>Equation Eval</code> </li>
+<li>In <code>Equation Eval</code></li>
 </ul>
 </li>
 </ul>
 </li>
+<li>Create test data<ul>
+<li><code>input.txt</code></li>
+<li><code>output.txt</code></li>
+</ul>
+</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md18"></a>
+Test Data</h2>
+<p>To solve <code>test/data/input.txt</code> to <code>test/data/output.txt</code>. Set path to the top of the project.</p>
+<div class="fragment"><div class="line">make DATA</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md19"></a>
+File reader in Julia</h3>
+<div class="fragment"><div class="line">julia&gt; open(&quot;myfile.txt&quot;, &quot;w&quot;) do io</div>
+<div class="line">           write(io, &quot;Hello world!&quot;)</div>
+<div class="line">       end;</div>
+<div class="line"> </div>
+<div class="line">julia&gt; open(f-&gt;read(f, String), &quot;myfile.txt&quot;)</div>
+<div class="line">&quot;Hello world!&quot;</div>
+</div><!-- fragment --><p>With <code>Formatter.jl</code> for formatting the scintific representation.</p>
+<h3><a class="anchor" id="autotoc_md20"></a>
+Format of input/output</h3>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadCenter">Input   </th><th class="markdownTableHeadCenter">Output    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyCenter"><img src="img/sample_input.png" alt="" class="inline"/>   </td><td class="markdownTableBodyCenter"><img src="img/sample_output.png" alt="" class="inline"/>   </td></tr>
+</table>
+<ul>
+<li>Two <code>\n</code> for separate inputs</li>
+<li>One <code>\n</code> for separate outputs </li>
 </ul>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
