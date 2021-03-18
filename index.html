@@ -238,10 +238,52 @@ What do I need?</h2>
 </li>
 </ul>
 <h2><a class="anchor" id="autotoc_md18"></a>
+Stack</h2>
+<p>Use <code>Array</code> to implement a stack</p>
+<h2><a class="anchor" id="autotoc_md19"></a>
+What data type we need?</h2>
+<ul>
+<li>Stack for <code>double</code>: <code>Numbers</code></li>
+<li>Stack for <code>int</code>: <code>Orders</code></li>
+<li>Stack for <code>enum</code>: <code>Operators</code></li>
+</ul>
+<p><a href="https://michaelchen.tech/c-programming/enumeration/"><em>Tutorial for <code>enum</code></em></a></p>
+<h3><a class="anchor" id="autotoc_md20"></a>
+Structure of a stack</h3>
+<div class="fragment"><div class="line">structure stack:</div>
+<div class="line">    maxsize : integer</div>
+<div class="line">    top : integer</div>
+<div class="line">    items : array of item</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md21"></a>
+Procedures</h3>
+<h4><a class="anchor" id="autotoc_md22"></a>
+Initiation</h4>
+<div class="fragment"><div class="line">procedure initialize(stk : stack, size : integer):</div>
+<div class="line">    stk.items ← new array of size items, initially empty</div>
+<div class="line">    stk.maxsize ← size</div>
+<div class="line">    stk.top ← 0</div>
+</div><!-- fragment --><h4><a class="anchor" id="autotoc_md23"></a>
+Push</h4>
+<div class="fragment"><div class="line">procedure push(stk : stack, x : item):</div>
+<div class="line">    if stk.top = stk.maxsize:</div>
+<div class="line">        report overflow error</div>
+<div class="line">    else:</div>
+<div class="line">        stk.items[stk.top] ← x</div>
+<div class="line">        stk.top ← stk.top + 1</div>
+</div><!-- fragment --><h4><a class="anchor" id="autotoc_md24"></a>
+Pop</h4>
+<div class="fragment"><div class="line">procedure pop(stk : stack):</div>
+<div class="line">    if stk.top = 0:</div>
+<div class="line">        report underflow error</div>
+<div class="line">    else:</div>
+<div class="line">        stk.top ← stk.top − 1</div>
+<div class="line">        r ← stk.items[stk.top]</div>
+<div class="line">        return r</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md25"></a>
 Test Data</h2>
 <p>To solve <code>test/data/input.txt</code> to <code>test/data/output.txt</code>. Set path to the top of the project.</p>
 <div class="fragment"><div class="line">make DATA</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md19"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md26"></a>
 File reader in Julia</h3>
 <div class="fragment"><div class="line">julia&gt; open(&quot;myfile.txt&quot;, &quot;w&quot;) do io</div>
 <div class="line">           write(io, &quot;Hello world!&quot;)</div>
@@ -250,7 +292,7 @@ File reader in Julia</h3>
 <div class="line">julia&gt; open(f-&gt;read(f, String), &quot;myfile.txt&quot;)</div>
 <div class="line">&quot;Hello world!&quot;</div>
 </div><!-- fragment --><p>With <code>Formatter.jl</code> for formatting the scintific representation.</p>
-<h3><a class="anchor" id="autotoc_md20"></a>
+<h3><a class="anchor" id="autotoc_md27"></a>
 Format of input/output</h3>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -260,9 +302,46 @@ Format of input/output</h3>
 </table>
 <ul>
 <li>Two <code>\n</code> for separate inputs</li>
-<li>One <code>\n</code> for separate outputs </li>
+<li>One <code>\n</code> for separate outputs</li>
 </ul>
-</div></div><!-- PageDoc -->
+<hr  />
+<h1><a class="anchor" id="autotoc_md29"></a>
+Notes of C language</h1>
+<h2><a class="anchor" id="autotoc_md30"></a>
+enum</h2>
+<div class="fragment"><div class="line"><span class="comment">/* Foreward declaration. */</span></div>
+<div class="line"><span class="keyword">typedef</span> <span class="keyword">enum</span> direction Direction;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">enum</span> direction {</div>
+<div class="line">    North,</div>
+<div class="line">    South,</div>
+<div class="line">    East,</div>
+<div class="line">    West</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
+<div class="line">{</div>
+<div class="line">    Direction dest = East;</div>
+<div class="line">    </div>
+<div class="line">    <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md31"></a>
+How to create a struct with element stored in heap</h2>
+<p>The struct have to be created in stack and use the pointer to heap.</p>
+<h3><a class="anchor" id="autotoc_md32"></a>
+Struct</h3>
+<div class="fragment"><div class="line"><span class="keyword">struct </span>a;</div>
+<div class="line"><span class="keywordtype">int</span> maxsize;</div>
+<div class="line">init_stack_double(&amp;a, maxsize);</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md33"></a>
+Initiation</h3>
+<div class="fragment"><div class="line"><span class="keywordtype">void</span> init_stack_double(<a class="code" href="structstack__double.html">stack_double</a>* sd, <span class="keywordtype">int</span> maxsize){</div>
+<div class="line">    sd-&gt;items = (<span class="keywordtype">double</span>*)malloc(maxsize*<span class="keyword">sizeof</span>(<span class="keywordtype">double</span>));</div>
+<div class="line">    sd-&gt;maxsize = maxsize;</div>
+<div class="line">    sd-&gt;top = 0;</div>
+<div class="line">}</div>
+<div class="ttc" id="astructstack__double_html"><div class="ttname"><a href="structstack__double.html">stack_double</a></div><div class="ttdef"><b>Definition:</b> stack.h:17</div></div>
+</div><!-- fragment --> </div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

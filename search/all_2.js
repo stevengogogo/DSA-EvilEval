@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['utils_2eh_3',['utils.h',['../utils_8h.html',1,'']]]
+  ['stack_5fdouble_3',['stack_double',['../structstack__double.html',1,'']]]
 ];
