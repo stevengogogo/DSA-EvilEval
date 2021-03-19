@@ -75,16 +75,27 @@ $(function() {
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;acutest.h&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;stack.h&quot;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keywordtype">void</span> test_stack_cycle(<span class="keywordtype">void</span>){</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keywordtype">int</span> sd_size = 1000000;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <a class="code" href="structstack__double.html">stack_double</a>* sd;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    init_stack_double(sd, sd_size);</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    kill_stack_double(sd);</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;}</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="astructstack__double_html"><div class="ttname"><a href="structstack__double.html">stack_double</a></div><div class="ttdef"><b>Definition:</b> stack.h:11</div></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#define MAX_INPUT 1000000</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordtype">void</span> test_stack_cycle(<span class="keywordtype">void</span>){</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <a class="code" href="structstack__double.html">stack_double</a> sd;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <a class="code" href="structstack__int.html">stack_int</a> si;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <a class="code" href="structstack__op.html">stack_op</a> so;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="comment">//Initiation</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    init_stack_double(&amp;sd, MAX_INPUT);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    init_stack_int(&amp;si, MAX_INPUT);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    init_stack_op(&amp;so, MAX_INPUT);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="comment">//Destroy</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    kill_stack_double(&amp;sd);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    kill_stack_int(&amp;si);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    kill_stack_op(&amp;so);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="astructstack__double_html"><div class="ttname"><a href="structstack__double.html">stack_double</a></div><div class="ttdef"><b>Definition:</b> stack.h:16</div></div>
+<div class="ttc" id="astructstack__int_html"><div class="ttname"><a href="structstack__int.html">stack_int</a></div><div class="ttdef"><b>Definition:</b> stack.h:22</div></div>
+<div class="ttc" id="astructstack__op_html"><div class="ttname"><a href="structstack__op.html">stack_op</a></div><div class="ttdef"><b>Definition:</b> stack.h:28</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

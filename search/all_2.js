@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['stack_5fdouble_2',['stack_double',['../structstack__double.html',1,'']]]
+  ['opor_2',['opor',['../structopor.html',1,'']]]
 ];
