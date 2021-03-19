@@ -1,9 +1,9 @@
-#ifndef TEST_STRPARSE_H
-#define TEST_STRPARSE_H
+#ifndef TEST_eqeval_H
+#define TEST_eqeval_H
 
 #define MAX_INPUT 1000000
 
-#include "strparse.h"
+#include "eqeval.h"
 
 void test_read_string(void){
     FILE* fptr = fopen("test/data/input.txt", "r");

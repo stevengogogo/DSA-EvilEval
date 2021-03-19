@@ -1,4 +1,4 @@
-#include "strparse.h"
+#include "eqeval.h"
 
 
 int pop_streq_item(char* eq_str, int* rpin, char* placeholder){

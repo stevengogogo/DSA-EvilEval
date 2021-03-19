@@ -1,5 +1,5 @@
-#ifndef STRPARSE_H
-#define STRPARSE_H
+#ifndef eqeval_H
+#define eqeval_H
 
 #include <string.h>
 #include <stdlib.h>

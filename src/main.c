@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include "stack.h"
 #include "utils.h"
-#include "strparse.h"
+#include "eqeval.h"
 
 # define MAX_INPUT 1000000
 
