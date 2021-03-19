@@ -249,7 +249,7 @@ Stack</h2>
 What data type we need?</h2>
 <ul>
 <li>Stack for <code>double</code>: <code>Numbers</code><ul>
-<li><code><a class="el" href="structstack__double.html">stack_double</a></code></li>
+<li><code>stack_double</code></li>
 </ul>
 </li>
 <li>Stack for <code>int</code>: <code>Orders</code><ul>
@@ -349,12 +349,11 @@ Struct</h3>
 <div class="line">init_stack_double(&amp;a, maxsize);</div>
 </div><!-- fragment --><h3><a class="anchor" id="autotoc_md33"></a>
 Initiation</h3>
-<div class="fragment"><div class="line"><span class="keywordtype">void</span> init_stack_double(<a class="code" href="structstack__double.html">stack_double</a>* sd, <span class="keywordtype">int</span> maxsize){</div>
+<div class="fragment"><div class="line"><span class="keywordtype">void</span> init_stack_double(stack_double* sd, <span class="keywordtype">int</span> maxsize){</div>
 <div class="line">    sd-&gt;items = (<span class="keywordtype">double</span>*)malloc(maxsize*<span class="keyword">sizeof</span>(<span class="keywordtype">double</span>));</div>
 <div class="line">    sd-&gt;maxsize = maxsize;</div>
 <div class="line">    sd-&gt;top = 0;</div>
 <div class="line">}</div>
-<div class="ttc" id="astructstack__double_html"><div class="ttname"><a href="structstack__double.html">stack_double</a></div><div class="ttdef"><b>Definition:</b> stack.h:18</div></div>
 </div><!-- fragment --><h3><a class="anchor" id="autotoc_md34"></a>
 Print double and float</h3>
 <blockquote class="doxtable">
