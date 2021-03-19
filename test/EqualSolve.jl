@@ -27,7 +27,7 @@ function main(input_fn, output_fn)
 
             if i>1
                 if (eqs[i]=="\n") & (eqs[i-1]=="\n")
-                    write(io, "\n")
+                    #write(io, "\n")
                 end
             end
 
