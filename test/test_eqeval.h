@@ -40,4 +40,9 @@ void test_str2op(void){
 }
 
 
+void test_evaluation(void){
+    
+}
+
+
 #endif

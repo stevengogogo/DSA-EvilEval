@@ -1,75 +1,164 @@
 #include "stack.h"
 
+int get_order(Operator op){
+        switch (op)
+    {
+    case PLUS:
+        return 0;
+        break;
+    case MINUS:
+        return 0;
+        break;
+    case MULT:
+        return 1;
+        break;
+    case DIV:
+        return 1;
+        break;
+    case LP:
+        return 2;
+        break;
+    case RP:
+        return  -2;
+        break;
+    default: {
+        perror("Error Order convertion");
+        raise(SIGINT);
+        break;
+    }
+    }
+}
+
+
+int is_parenthesis(Operator op){
+    if (op==LP)
+        return 1;
+    else if(op==RP)
+        return 1;
+    else 
+        return 0;
+}
+
+
 /*Initiation*/
 
-void init_stack_double(stack_double* sd, int maxsize){
-    sd->items = (double*)malloc(maxsize*sizeof(double));
-    assert(sd->items != NULL);
-    sd->maxsize = maxsize;
-    sd->top = 0;
-}
+void init_stack_nopor(stack_nopor* sd, int maxsize){
+    opor init_op;
 
-
-void init_stack_opor(stack_opor* sd, int maxsize){
-    sd->opors = (opor*)malloc(maxsize*sizeof(opor));
+    sd->nums = (double*)malloc((maxsize+1+2)*sizeof(double));
+    sd->opors = (opor*)malloc((maxsize+1)*sizeof(opor));
+    assert(sd->nums != NULL);
     assert(sd->opors != NULL);
     sd->maxsize = maxsize;
-    sd->top = 0;
+    sd->order_base = 0;
+
+    //Initiate operation
+    init_op.op = PLUS;
+    init_op.order = 0;
+
+    sd->nums[0] = 0;
+    sd->nums[1] = 0;
+    sd->opors[0] = init_op;
+    sd->top = 0; //insert 0+0
 }
+
+
 
 /*Destruction*/
-
-void kill_stack_double(stack_double* st){
-    free(st->items);
-    st->items = NULL;
-}
-
-
-void kill_stack_opor(stack_opor* st){
+void kill_stack_nopor(stack_nopor* st){
+    free(st->nums);
     free(st->opors);
+    st->nums = NULL;
     st->opors = NULL;
 }
 
-/*Push*/
 
-void push_stack_double(stack_double* st, double item){
-    assert(st->top < st->maxsize);
-    ++(st->top);
-    st->items[st->top] = item;  
+
+void update_stack_opor_orderbase(stack_nopor* st, Operator op){
+    if (is_parenthesis(op)){
+        st->order_base += get_order(op);
+    }
 }
 
-
-
-void push_stack_opor(stack_opor* st, opor pr){
+/*Push*/
+void push_stack_nopor(stack_nopor* st, double num, opor pr){
     assert(st->top < st->maxsize);
-    ++(st->top);
-    st->opors[st->top] = pr;
+    assert(st->top > -1);
+
+    if (st->opors[st->top].order < pr.order){ // push in
+        ++(st->top);  // extend
+        st->opors[st->top] = pr;
+        st->nums[st->top+1] = num;
+    }
+
+    else{
+        eval_stack_nopor_once(st);
+        push_stack_nopor(st, num, pr);
+    }
 }
 
 /*Pop*/
-double pop_stack_double(stack_double* st){
-    double out;
-    assert(st->top != 0);
-    out = st->items[st->top];
+void eval_stack_nopor_once(stack_nopor* st){
+    assert(st->top >= 0);
+    double a,b;
+    double c;
+    opor pr;
+
+    // Get numbers
+    a = st->nums[st->top];
+    b = st->nums[st->top + 1];
+
+    // Get Operator
+    pr = st->opors[st->top];
+    
+    // Eval 
+    c = eval(pr.op, a, b);
+
+    //Update
+    st->nums[st->top] = c;
     --(st->top);
-    return out;
 }
 
-
-opor pop_stack_opor(stack_opor* st){
-    opor out;
-    assert(st->top != 0);
-    out = st->opors[st->top];
-    --(st->top);
-    return out;
+void eval_stack_nopor(stack_nopor* st){
+    while(st->top > 0){
+        eval_stack_nopor_once(st);
+    }
 }
 
-
-int is_opor_equal(opor a, opor b){
-    if (a.op != b.op)
-        return 0;
-    else if (a.order != b.order)
-        return 0;
-    else 
-        return 1;
+double get_eq_answer(stack_nopor* st){
+    double ans;
+    eval_stack_nopor(st);
+    eval_stack_nopor_once(st);
+    assert(st->top==-1); // pop all items
+    ans = st->nums[0];
+    return ans;
 }
+
+double eval(Operator op, double a, double b){
+    switch (op)
+    {
+    case PLUS:
+        return a + b ;
+        break;
+    case MULT:
+        return a*b;
+        break;
+    case MINUS:
+        return a-b;
+    case DIV:
+        return a/b;
+    default: {
+        perror("Error Symbol to convert to operator");
+        raise(SIGINT);
+        break; 
+    }
+    }
+}
+
+opor get_opor(Operator op , stack_nopor* st){
+    opor pr;
+    assert(is_parenthesis(op) == 0);
+    pr.order = get_order(op) + st->order_base;
+    pr.op = op;
+    return pr;
+};

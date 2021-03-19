@@ -2,7 +2,9 @@
 #define STACK_H
 
 #include <stdlib.h>
+#include <stdio.h>
 #include <assert.h>
+#include <signal.h>
 #include "utils.h"
 
 
@@ -14,40 +16,41 @@ typedef struct {
 } opor;
 
 
-/** Stack of doubles*/
-typedef struct {
-    int maxsize;
-    int top;
-    double* items;
-} stack_double;
 
-/**Stack of bundles of operators and orders*/
 typedef struct {
     int maxsize;
-    int top;
+    int top; // top of operation/order
+    double* nums;
     opor* opors;
-} stack_opor;
+    int order_base;
+} stack_nopor;
 
 
+int get_order(Operator);
 
-/** @brief Initiate a stack with double. 
- * This function use malloc to allocate a stack with double array. `items` is allocated with size of maxsize and `top` is set to `0`*/
-void init_stack_double(stack_double*,int maxsize);
-void init_stack_opor(stack_opor* sd, int maxsize);
+int is_parenthesis(Operator);
+
+void init_stack_nopor(stack_nopor*,int maxsize);
+
 
 /** Kill*/
-void kill_stack_double(stack_double*);
-void kill_stack_opor(stack_opor*);
+void kill_stack_nopor(stack_nopor*);
+
+
+void update_stack_opor_orderbase(stack_nopor* st, Operator op);
 
 /** Push*/
-void push_stack_double(stack_double*, double item);
-void push_stack_opor(stack_opor*, opor);
+void push_stack_nopor(stack_nopor*, double num, opor pr);
 
 /** Pop*/
-double pop_stack_double(stack_double*);
-opor pop_stack_opor(stack_opor*);
+void eval_stack_nopor_once(stack_nopor*);
 
+void eval_stack_nopor(stack_nopor*);
 
-int is_opor_equal(opor a, opor b);
+double get_eq_answer(stack_nopor*);
+
+double eval(Operator, double a, double b);
+
+opor get_opor(Operator op , stack_nopor* st);
 
 #endif
