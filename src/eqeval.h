@@ -9,6 +9,8 @@
 #include "utils.h"
 #include "stack.h"
 
+#define MAX_INPUT 1000000
+
 /** pop an operator or a number (in string) and move the pin forward.
  * @param eq_str The string of equation
  * @param rpin start site for reading
@@ -21,6 +23,12 @@ Operator str2op(char*);
 /** Convert string to double. Wrapper of `atof`*/
 double str2double(char*);
 
+int get_order(Operator);
+int is_parenthesis(Operator);
+
+
+
+double eval_string(char*);
 
 
 #endif
