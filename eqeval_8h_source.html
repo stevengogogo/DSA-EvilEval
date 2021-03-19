@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>C Project Template: stack_int Struct Reference</title>
+<title>C Project Template: src/eqeval.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -59,32 +59,33 @@ $(function() {
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
 </div><!-- top -->
 <div class="header">
-  <div class="summary">
-<a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="structstack__int-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">stack_int Struct Reference</div>  </div>
+<div class="title">eqeval.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:a72166a881d0c4088057c078f8f802320"><td class="memItemLeft" align="right" valign="top"><a id="a72166a881d0c4088057c078f8f802320"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>maxsize</b></td></tr>
-<tr class="separator:a72166a881d0c4088057c078f8f802320"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a27afbd25167b64647bff63f9dc66fbcf"><td class="memItemLeft" align="right" valign="top"><a id="a27afbd25167b64647bff63f9dc66fbcf"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>top</b></td></tr>
-<tr class="separator:a27afbd25167b64647bff63f9dc66fbcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a04a02516b3922ecd424bbd6545dfc278"><td class="memItemLeft" align="right" valign="top"><a id="a04a02516b3922ecd424bbd6545dfc278"></a>
-int *&#160;</td><td class="memItemRight" valign="bottom"><b>items</b></td></tr>
-<tr class="separator:a04a02516b3922ecd424bbd6545dfc278"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
-<hr/>The documentation for this struct was generated from the following file:<ul>
-<li>src/<a class="el" href="stack_8h_source.html">stack.h</a></li>
-</ul>
-</div><!-- contents -->
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef eqeval_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define eqeval_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;signal.h&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;ctype.h&gt;</span> <span class="comment">//isdigit(), ispunct()</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="utils_8h.html">utils.h</a>&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keywordtype">int</span> pop_streq_item(<span class="keywordtype">char</span>* eq_str, <span class="keywordtype">int</span>*  rpin, <span class="keywordtype">char</span>* placeholder);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;Operator str2op(<span class="keywordtype">char</span>*);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keywordtype">double</span> str2double(<span class="keywordtype">char</span>*);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="autils_8h_html"><div class="ttname"><a href="utils_8h.html">utils.h</a></div><div class="ttdoc">General Utilities for C language.</div></div>
+</div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
