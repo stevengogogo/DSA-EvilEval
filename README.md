@@ -83,7 +83,10 @@ Rule
 
 Stategy:
 
-> Get whole string, and pop it one-by-one
+> Read a line, and pop it one-by-one
+
+![](img/StringProcess.png)
+
 
 ### Usage of `fscanf`
 

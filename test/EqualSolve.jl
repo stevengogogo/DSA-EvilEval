@@ -17,7 +17,7 @@ function main(input_fn, output_fn)
 
     open(output_fn, "w") do io
         for i in eachindex(eqs)
-            @show eqs[i]
+            #@show eqs[i]
             if length(eqs[i]) > 1
                 e = strip(eqs[i], ['\n'])
                 sol = solve_eq(e)
@@ -37,3 +37,4 @@ end
 
 
 main("test/data/input.txt", "test/data/output.txt")
+@info "Done"

@@ -10,6 +10,7 @@
 // Run TESTs 
 TEST_LIST = {
     {"Stack Cycle", test_stack_cycle},
+    {"String: Parse", test_read_string},
     {"Utility", test_utils},
     {NULL, NULL} // Terminate the test
 };

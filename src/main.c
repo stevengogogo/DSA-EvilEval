@@ -3,15 +3,24 @@
 #include <stdio.h>
 #include "stack.h"
 #include "utils.h"
+#include "strparse.h"
+
+# define MAX_INPUT 1000000
 
 int main()
 {
     
-    int sd_size = 1000;
-    stack_double sd;
+    FILE* fptr = fopen("test/data/input.txt", "r");
+    char input[MAX_INPUT+1];
+    char ele[MAX_INPUT+1];
+    int rpin = 0;
 
-    init_stack_double(&sd, sd_size);
-    kill_stack_double(&sd);
+    fgets(input, MAX_INPUT, fptr);
+
+    pop_streq_item(input, &rpin, ele);
+    TEST_ASSERT(rpin==1);
+
+    fclose(fptr);
 
     return 0;
 }
