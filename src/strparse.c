@@ -30,3 +30,37 @@ int pop_streq_item(char* eq_str, int* rpin, char* placeholder){
     placeholder[n_read] = '\0';
     return 0;
 }
+
+Operator str2op(char* s){
+
+    switch (s[0])
+    {
+    case '+':
+        return PLUS;
+        break;
+    case '-':
+        return MINUS;
+        break;
+    case '*':
+        return MULT;
+        break;
+    case '/':
+        return DIV;
+        break;
+    case '(':
+        return LP;
+        break;
+    case ')':
+        return RP;
+        break;
+    default: {
+        perror("Error Symbol to convert to operator");
+        raise(SIGINT);
+        break;
+    }
+    }
+}
+
+double str2double(char* numstr){
+    return atof(numstr);
+}

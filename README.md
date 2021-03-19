@@ -299,3 +299,22 @@ void init_stack_double(stack_double* sd, int maxsize){
     sd->top = 0;
 }
 ```
+
+
+#### Print double and float
+
+> Use "%f". Double and float are the same for printf
+
+[Source](https://log2base2.com/c-questions/io/how-to-print-double-value-in-c.html)
+
+#### Structure of double and float
+
+![](https://geekr.dev/wp-content/uploads/2021/01/3-number-systemsfloatingpoint-4-638.jpg)
+
+
+### Absolute number in C
+
+$|4|$
+```c
+fabs(-4)
+```

@@ -2,16 +2,10 @@
 #define STACK_H
 
 #include <stdlib.h>
+#include "utils.h"
 
 
-typedef enum OPERATOR Operator;
 
-enum OPERATOR {
-    PLUS, // +
-    MINUS, // -
-    MULT, // *
-    DIV // /
-};
 
 
 typedef struct {

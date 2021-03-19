@@ -22,5 +22,22 @@ void test_read_string(void){
     fclose(fptr);
 }
 
+void test_str2op(void){
+    char s[MAX_INPUT] = "+-*/()";
+    char sym[2] = "0"; // {symbol, \0}
+    char n[MAX_INPUT] = "3434343243242342423";
+    double n_r = 3434343243242342423;
+    double n_e = str2double(n);
+    Operator s_r[] = {PLUS, MINUS, MULT, DIV, LP, RP};
+
+    for(int i=0;i<strlen(s);i++){
+        sym[0] = s[i]; // Copy symbol
+
+        TEST_ASSERT( str2op(sym) == s_r[i]);
+    }
+
+    TEST_ASSERT( is_double_equal(n_r, n_e ) );
+}
+
 
 #endif

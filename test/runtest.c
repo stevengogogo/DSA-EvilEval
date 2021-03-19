@@ -11,6 +11,7 @@
 TEST_LIST = {
     {"Stack Cycle", test_stack_cycle},
     {"String: Parse", test_read_string},
+    {"Convert String to Operator / Numbers", test_str2op},
     {"Utility", test_utils},
     {NULL, NULL} // Terminate the test
 };

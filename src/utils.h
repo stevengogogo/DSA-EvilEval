@@ -11,26 +11,25 @@
 #ifndef UTILS_H
 #define UTILS_H
 
-/**
- * @brief Store extreme value
- * @param extreme extreme value
- * @param arg argument
- */
-typedef struct {
-    int extreme;
-    int arg;
-} extm;
+#include <math.h>
+#include <float.h>
 
-/**
- * @brief 
- * 
- * @param a 
- * @param b 
- * @return extm 
- */
-extm max(int* a,int* b);
-extm min(int*,int*);
+#define error_tol 
 
+typedef enum OPERATOR Operator;
+enum OPERATOR {
+    PLUS, // +
+    MINUS, // -
+    MULT, // *
+    DIV, // /
+    LP, // (
+    RP  // )
+};
 
+/** Compare two double
+ * @ref Reddit: https://www.reddit.com/r/C_Programming/comments/4thsn7/comparing_doubles_in_c/d5iduhx?utm_source=share&utm_medium=web2x&context=3
+*/
+int is_double_equal(double a, double b);
+double max_double(double a, double b);
 
 #endif
