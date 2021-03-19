@@ -4,12 +4,21 @@
 #include "acutest.h"
 #include "stack.h"
 
-void test_stack_cycle(void){
-    int sd_size = 1000000;
-    stack_double* sd;
+#define MAX_INPUT 1000000
 
-    init_stack_double(sd, sd_size);
-    kill_stack_double(sd);
+void test_stack_cycle(void){
+    stack_double sd;
+    stack_int si;
+    stack_op so;
+
+    //Initiation
+    init_stack_double(&sd, MAX_INPUT);
+    init_stack_int(&si, MAX_INPUT);
+    init_stack_op(&so, MAX_INPUT);
+    //Destroy
+    kill_stack_double(&sd);
+    kill_stack_int(&si);
+    kill_stack_op(&so);
 }
 
 #endif

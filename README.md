@@ -176,8 +176,11 @@ Use `Array` to implement a stack
 ### What data type we need?
 
 - Stack for `double`: `Numbers`
+    - `stack_double`
 - Stack for `int`: `Orders`
+    - `stack_int`
 - Stack for `enum`: `Operators`
+    - `stack_op`
 
 [*Tutorial for `enum`*](https://michaelchen.tech/c-programming/enumeration/)
 
@@ -207,8 +210,8 @@ procedure push(stk : stack, x : item):
     if stk.top = stk.maxsize:
         report overflow error
     else:
-        stk.items[stk.top] ← x
         stk.top ← stk.top + 1
+        stk.items[stk.top] ← x
 ```
 
 ##### Pop
