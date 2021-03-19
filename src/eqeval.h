@@ -7,6 +7,7 @@
 #include <signal.h>
 #include <ctype.h> //isdigit(), ispunct()
 #include "utils.h"
+#include "stack.h"
 
 /** pop an operator or a number (in string) and move the pin forward.
  * @param eq_str The string of equation
@@ -19,5 +20,7 @@ int pop_streq_item(char* eq_str, int*  rpin, char* placeholder);
 Operator str2op(char*);
 /** Convert string to double. Wrapper of `atof`*/
 double str2double(char*);
+
+
 
 #endif
