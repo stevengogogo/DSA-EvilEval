@@ -93,7 +93,7 @@ double eval_string(char* eqstr){
         }
 
         // Accounter a number
-        if (isdigit(symbol[0]) & is_first_number){
+        if (isdigit(symbol[0]) && is_first_number){
             num = str2double(symbol);
             st.nums[1] = num; // insert first number to 0+num
             is_first_number = 0;
@@ -101,15 +101,20 @@ double eval_string(char* eqstr){
 
         if (ispunct(symbol[0])){
             op = str2op(symbol); // get operator
-            pop_streq_item(eqstr, &rpin, symbol);
+            
+            num = 'start';
+            while( isdigit(num) == 0 )
+                pop_streq_item(eqstr, &rpin, symbol);
+                // Todo
+                num = str2double(symbol);
+            
             assert(isdigit(symbol[0])); //get number
-            num = str2double(symbol);
 
             // Get operator and order
             pr = get_opor(op, &st);
             push_stack_nopor(&st, num, pr);
         }
-
+    }
 
     ans = get_eq_answer(&st);
     kill_stack_nopor(&st);

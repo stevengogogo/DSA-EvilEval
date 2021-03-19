@@ -83,12 +83,18 @@ void update_stack_opor_orderbase(stack_nopor* st, Operator op){
 /*Push*/
 void push_stack_nopor(stack_nopor* st, double num, opor pr){
     assert(st->top < st->maxsize);
-    assert(st->top > -1);
+    assert(st->top >= -1);
 
     if (st->opors[st->top].order < pr.order){ // push in
         ++(st->top);  // extend
         st->opors[st->top] = pr;
         st->nums[st->top+1] = num;
+    }
+
+    else if(st->top==0){ //eval and replace
+        st->nums[0] = eval(st->opors->op, st->nums[0], st->nums[1]);
+        st->nums[1] = num;
+        st->opors[0] = pr;
     }
 
     else{
