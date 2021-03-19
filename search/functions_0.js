@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['max_8',['max',['../utils_8h.html#a0341cab7f3cea9a0f5b50aea9baec4a3',1,'utils.c']]]
+  ['is_5fdouble_5fequal_6',['is_double_equal',['../utils_8h.html#aa4978bd6e29d3f58b63e150cb7d01956',1,'utils.c']]]
 ];

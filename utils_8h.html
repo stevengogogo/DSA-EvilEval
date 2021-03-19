@@ -66,7 +66,9 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">utils.h File Reference</div>  </div>
@@ -75,31 +77,61 @@ $(function() {
 
 <p>General Utilities for C language.  
 <a href="#details">More...</a></p>
-<div class="textblock"><div class="dynheader">
+<div class="textblock"><code>#include &lt;math.h&gt;</code><br />
+<code>#include &lt;float.h&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Include dependency graph for utils.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="utils_8h__incl.png" border="0" usemap="#asrc_2utils_8h" alt=""/></div>
+<map name="asrc_2utils_8h" id="asrc_2utils_8h">
+<area shape="rect" title="General Utilities for C language." alt="" coords="38,5,117,32"/>
+<area shape="rect" title=" " alt="" coords="5,80,67,107"/>
+<area shape="rect" title=" " alt="" coords="91,80,147,107"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="utils_8h__dep__incl.png" border="0" usemap="#asrc_2utils_8hdep" alt=""/></div>
 <map name="asrc_2utils_8hdep" id="asrc_2utils_8hdep">
-<area shape="rect" title="General Utilities for C language." alt="" coords="21,5,100,32"/>
-<area shape="rect" href="test__utils_8h_source.html" title=" " alt="" coords="5,80,116,107"/>
+<area shape="rect" title="General Utilities for C language." alt="" coords="168,5,247,32"/>
+<area shape="rect" href="stack_8h_source.html" title=" " alt="" coords="37,80,124,107"/>
+<area shape="rect" href="strparse_8h_source.html" title=" " alt="" coords="157,80,258,107"/>
+<area shape="rect" href="test__utils_8h_source.html" title=" " alt="" coords="283,80,393,107"/>
+<area shape="rect" href="test__stack_8h_source.html" title=" " alt="" coords="5,155,124,181"/>
+<area shape="rect" href="test__strparse_8h_source.html" title=" " alt="" coords="148,155,283,181"/>
 </map>
 </div>
 </div>
 <p><a href="utils_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structextm.html">extm</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Store extreme value.  <a href="structextm.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:ae6bbb9ae6130d55c9bbff4c064504630"><td class="memItemLeft" align="right" valign="top"><a id="ae6bbb9ae6130d55c9bbff4c064504630"></a>
+typedef enum OPERATOR&#160;</td><td class="memItemRight" valign="bottom"><b>Operator</b></td></tr>
+<tr class="separator:ae6bbb9ae6130d55c9bbff4c064504630"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:aa1d6be7b325cbf5d7dc719913dd5520f"><td class="memItemLeft" align="right" valign="top"><a id="aa1d6be7b325cbf5d7dc719913dd5520f"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>OPERATOR</b> { <br />
+&#160;&#160;<b>PLUS</b>
+, <b>MINUS</b>
+, <b>MULT</b>
+, <b>DIV</b>
+, <br />
+&#160;&#160;<b>LP</b>
+, <b>RP</b>
+<br />
+ }</td></tr>
+<tr class="separator:aa1d6be7b325cbf5d7dc719913dd5520f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a0341cab7f3cea9a0f5b50aea9baec4a3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structextm.html">extm</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8h.html#a0341cab7f3cea9a0f5b50aea9baec4a3">max</a> (int *a, int *b)</td></tr>
-<tr class="separator:a0341cab7f3cea9a0f5b50aea9baec4a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a851310375eb277a2171873c67da7aa25"><td class="memItemLeft" align="right" valign="top"><a id="a851310375eb277a2171873c67da7aa25"></a>
-<a class="el" href="structextm.html">extm</a>&#160;</td><td class="memItemRight" valign="bottom"><b>min</b> (int *, int *)</td></tr>
-<tr class="separator:a851310375eb277a2171873c67da7aa25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4978bd6e29d3f58b63e150cb7d01956"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8h.html#aa4978bd6e29d3f58b63e150cb7d01956">is_double_equal</a> (double a, double b)</td></tr>
+<tr class="separator:aa4978bd6e29d3f58b63e150cb7d01956"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada4f3286019adad100a7adb43cde4030"><td class="memItemLeft" align="right" valign="top"><a id="ada4f3286019adad100a7adb43cde4030"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>max_double</b> (double a, double b)</td></tr>
+<tr class="separator:ada4f3286019adad100a7adb43cde4030"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>General Utilities for C language. </p>
@@ -108,22 +140,22 @@ Functions</h2></td></tr>
 <dl class="section date"><dt>Date</dt><dd>2021-03-08</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2021 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="a0341cab7f3cea9a0f5b50aea9baec4a3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0341cab7f3cea9a0f5b50aea9baec4a3">&#9670;&nbsp;</a></span>max()</h2>
+<a id="aa4978bd6e29d3f58b63e150cb7d01956"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4978bd6e29d3f58b63e150cb7d01956">&#9670;&nbsp;</a></span>is_double_equal()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structextm.html">extm</a> max </td>
+          <td class="memname">int is_double_equal </td>
           <td>(</td>
-          <td class="paramtype">int *&#160;</td>
+          <td class="paramtype">double&#160;</td>
           <td class="paramname"><em>a</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int *&#160;</td>
+          <td class="paramtype">double&#160;</td>
           <td class="paramname"><em>b</em>&#160;</td>
         </tr>
         <tr>
@@ -133,14 +165,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">a</td><td></td></tr>
-    <tr><td class="paramname">b</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>extm </dd></dl>
+<p>Compare two double Reddit: <a href="https://www.reddit.com/r/C_Programming/comments/4thsn7/comparing_doubles_in_c/d5iduhx?utm_source=share&utm_medium=web2x&context=3">https://www.reddit.com/r/C_Programming/comments/4thsn7/comparing_doubles_in_c/d5iduhx?utm_source=share&amp;utm_medium=web2x&amp;context=3</a> </p>
 
 </div>
 </div>
