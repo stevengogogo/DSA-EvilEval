@@ -81,6 +81,9 @@ Rule
 
 ## String Operation
 
+Stategy:
+
+> Get whole string, and pop it one-by-one
 
 ### Usage of `fscanf`
 
@@ -92,6 +95,8 @@ Rule
 #### Return Value
 
 - Source: [TutorialPoint](https://www.tutorialspoint.com/c_standard_library/c_function_fscanf.htm)
+
+
 
 ##  Data Type and Range
 

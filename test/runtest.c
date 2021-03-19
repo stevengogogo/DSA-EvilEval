@@ -4,6 +4,7 @@
 
 #include "test_utils.h"
 #include "test_stack.h"
+#include "test_strparse.h"
 
 
 // Run TESTs 
