@@ -5,7 +5,7 @@
 #include "utils.h"
 #include "stack.h"
 
-#define MAX_INPUT 1000000
+#define MAX_INPUT 2000000
 
 void test_stack_cycle(void){
     stack_nopor sd;
