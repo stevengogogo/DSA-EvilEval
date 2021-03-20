@@ -19,9 +19,15 @@ typedef struct {
 
 typedef struct {
     int maxsize;
-    int top; // top of operation/order
+
+    //Stack of doubles
     double* nums;
+    int top_num;
+
+    //Stack op operator
     opor* opors;
+    int top; // top of operation/order
+
     int order_base;
 } stack_nopor;
 
@@ -37,10 +43,16 @@ void init_stack_nopor(stack_nopor*,int maxsize);
 void kill_stack_nopor(stack_nopor*);
 
 
-void update_stack_opor_orderbase(stack_nopor* st, Operator op);
+void update_stack_orderbase(stack_nopor* st, Operator op);
+
+
+double pop_stack_num(stack_nopor* st);
+opor pop_stack_opor(stack_nopor *st);
 
 /** Push*/
-void push_stack_nopor(stack_nopor*, double num, opor pr);
+void push_stack_num(stack_nopor*, double num);
+void push_stack_op(stack_nopor*, Operator op);
+
 
 /** Pop*/
 void eval_stack_nopor_once(stack_nopor*);

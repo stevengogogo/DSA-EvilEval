@@ -57,9 +57,11 @@ void init_stack_nopor(stack_nopor* sd, int maxsize){
     init_op.order = 0;
 
     sd->nums[0] = 0;
-    sd->nums[1] = 0;
     sd->opors[0] = init_op;
+
+    //Tops
     sd->top = 0; //insert 0+0
+    sd->top_num = 0; // [0]
 }
 
 
@@ -74,34 +76,57 @@ void kill_stack_nopor(stack_nopor* st){
 
 
 
-void update_stack_opor_orderbase(stack_nopor* st, Operator op){
+void update_stack_orderbase(stack_nopor* st, Operator op){
     if (is_parenthesis(op)){
         st->order_base += get_order(op);
     }
 }
 
-/*Push*/
-void push_stack_nopor(stack_nopor* st, double num, opor pr){
-    assert(st->top < st->maxsize);
-    assert(st->top >= -1);
-
-    if (st->opors[st->top].order < pr.order){ // push in
-        ++(st->top);  // extend
-        st->opors[st->top] = pr;
-        st->nums[st->top+1] = num;
-    }
-
-    else if(st->top==0){ //eval and replace
-        st->nums[0] = eval(st->opors->op, st->nums[0], st->nums[1]);
-        st->nums[1] = num;
-        st->opors[0] = pr;
-    }
-
-    else{
-        eval_stack_nopor_once(st);
-        push_stack_nopor(st, num, pr);
-    }
+/*Pop*/
+double pop_stack_num(stack_nopor* st){
+    assert((st->top_num ) >=0 );
+    double num;
+    num = st->nums[st->top_num];
+    --(st->top_num);
+    return num;
 }
+
+opor pop_stack_opor(stack_nopor *st){
+    assert(st->top>=0);
+    opor pr;
+    pr = st->opors[st->top];
+    --(st->top);
+    return pr;
+}
+
+/*Push*/
+void push_stack_num(stack_nopor* st, double num){
+    assert(st->top_num<st->maxsize);
+    ++(st->top_num);//Append
+
+    st->nums[st->top_num] = num;
+}
+
+void push_stack_op(stack_nopor* st, Operator op){
+    assert(st->top < st->maxsize);
+    assert(st->top >= 0);
+    assert(op!=LP);
+    assert(op!=RP);
+
+    opor pr = {
+        .op = op,
+        .order = get_order(op)+st->order_base //Add order base
+    };
+
+
+    while((st->opors[st->top].order >= pr.order) && (st->top>=0) ){ 
+        eval_stack_nopor_once(st);
+    } //until op becomes the lartest
+
+    ++(st->top);  // append
+    st->opors[st->top] = pr;
+}
+
 
 /*Pop*/
 void eval_stack_nopor_once(stack_nopor* st){
@@ -111,32 +136,37 @@ void eval_stack_nopor_once(stack_nopor* st){
     opor pr;
 
     // Get numbers
-    a = st->nums[st->top];
-    b = st->nums[st->top + 1];
+    b = pop_stack_num(st);
+    a = pop_stack_num(st);
 
     // Get Operator
-    pr = st->opors[st->top];
+    pr = pop_stack_opor(st);
     
     // Eval 
     c = eval(pr.op, a, b);
 
     //Update
-    st->nums[st->top] = c;
-    --(st->top);
+    push_stack_num(st, c);
 }
 
 void eval_stack_nopor(stack_nopor* st){
     while(st->top > 0){
         eval_stack_nopor_once(st);
     }
+
 }
 
 double get_eq_answer(stack_nopor* st){
     double ans;
     eval_stack_nopor(st);
-    eval_stack_nopor_once(st);
-    assert(st->top==-1); // pop all items
-    ans = st->nums[0];
+    assert(st->top_num < 3);
+    ans = eval(st->opors[0].op, 
+               st->nums[0], 
+               st->nums[1]
+            );
+    if (st->top_num==2){ //single value
+        ans += st->nums[st->top_num];
+    }
     return ans;
 }
 

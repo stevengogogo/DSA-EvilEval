@@ -88,31 +88,22 @@ double eval_string(char* eqstr){
         //Update order base for ( )
         if ((symbol[0]=='(') | (symbol[0]==')')){
             op = str2op(symbol);
-            update_stack_opor_orderbase(&st, op);
+            update_stack_orderbase(&st, op);
             continue;
         }
 
-        // Accounter a number
-        if (isdigit(symbol[0]) && is_first_number){
+        // Meet a number
+        if (isdigit(symbol[0])){
             num = str2double(symbol);
-            st.nums[1] = num; // insert first number to 0+num
-            is_first_number = 0;
+            push_stack_num(&st, num);
+            continue;
         }
 
+        // Meet an operator: +-*/
         if (ispunct(symbol[0])){
-            op = str2op(symbol); // get operator
-            
-            num = 'start';
-            while( isdigit(num) == 0 )
-                pop_streq_item(eqstr, &rpin, symbol);
-                // Todo
-                num = str2double(symbol);
-            
-            assert(isdigit(symbol[0])); //get number
-
-            // Get operator and order
-            pr = get_opor(op, &st);
-            push_stack_nopor(&st, num, pr);
+           op = str2op(symbol);
+           push_stack_op(&st, op); //remember to convert to opor
+           continue;
         }
     }
 

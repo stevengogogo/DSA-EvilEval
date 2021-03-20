@@ -16,13 +16,11 @@ void test_stack_cycle(void){
     init_stack_nopor(&sd, MAX_INPUT);
 
     // Update order base
-    update_stack_opor_orderbase(&sd, op);
+    update_stack_orderbase(&sd, op);
     
-    // Get bundle of order and priority with current status
-    pr = get_opor(op, &sd);
     
     // Push and smash
-    push_stack_nopor(&sd, 4, pr);
+    push_stack_op(&sd, op);
 
     //Calculation: Default 0
     TEST_ASSERT(get_eq_answer(&sd)==0);
@@ -35,6 +33,6 @@ void test_stack_cycle(void){
 
 void test_stack_push_pop(void){
 
-    
+
 }
 #endif

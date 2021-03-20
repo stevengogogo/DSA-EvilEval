@@ -56,13 +56,17 @@ void test_evaluation(void){
     fgets(output, MAX_INPUT, fptr_ans); 
 
     //eval
+
+    //**Main FUNCTION
     ans_e = eval_string(input);
+    //
+ 
     ans = atof(output);
 
     if (is_double_equal(ans_e,ans) == 0){
-        printf("Real: %f; Measured: %f", ans, ans_e);
+        printf("Real: %f; Measured: %f, dev: %f", ans, ans_e, fabs(ans-ans_e));
     }
-    TEST_ASSERT(is_double_equal(ans_e,ans));
+    TEST_ASSERT(  fabs(ans_e-ans) < 0.0000000000001);
 
     }
 
