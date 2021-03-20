@@ -66,7 +66,7 @@ void test_evaluation(void){
     if (is_double_equal(ans_e,ans) == 0){
         printf("Real: %f; Measured: %f, dev: %f", ans, ans_e, fabs(ans-ans_e));
     }
-    TEST_ASSERT(  fabs(ans_e-ans) < 0.0000000000001);
+    TEST_ASSERT( is_double_equal(ans_e,ans));
 
     }
 

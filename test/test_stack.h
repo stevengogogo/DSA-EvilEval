@@ -20,6 +20,7 @@ void test_stack_cycle(void){
     
     
     // Push and smash
+    push_stack_num(&sd, 0);
     push_stack_op(&sd, op);
 
     //Calculation: Default 0
