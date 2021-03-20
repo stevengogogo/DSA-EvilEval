@@ -321,3 +321,8 @@ $|4|$
 ```c
 fabs(-4)
 ```
+
+#### How to implement generic programming
+
+- [Function Pointer](https://chenhh.gitbooks.io/parallel_processing/content/cython/function_pointer.html#function-pointer%E5%81%9A%E7%82%BA%E5%87%BD%E5%BC%8F%E7%9A%84%E5%8F%83%E6%95%B8)
+- [Generic Programming](http://cs.boisestate.edu/~amit/teaching/253/handouts/07-c-generic-coding-handout.pdf)
