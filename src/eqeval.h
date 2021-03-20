@@ -23,8 +23,8 @@ Operator str2op(char*);
 /** Convert string to double. Wrapper of `atof`*/
 double str2double(char*);
 
-int get_order(Operator);
-int is_parenthesis(Operator);
+
+
 
 
 

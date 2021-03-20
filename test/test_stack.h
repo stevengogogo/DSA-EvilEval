@@ -8,51 +8,32 @@
 #define MAX_INPUT 1000000
 
 void test_stack_cycle(void){
-    stack_double sd;
-    stack_opor so;
-   
+    stack_nopor sd;
+    opor pr;
+    Operator op = MULT;
 
     //Initiation
-    init_stack_double(&sd, MAX_INPUT);
-    init_stack_opor(&so, MAX_INPUT);
+    init_stack_nopor(&sd, MAX_INPUT);
+
+    // Update order base
+    update_stack_orderbase(&sd, op);
+    
+    
+    // Push and smash
+    push_stack_num(&sd, 0);
+    push_stack_op(&sd, op);
+
+    //Calculation: Default 0
+    TEST_ASSERT(get_eq_answer(&sd)==0);
+
     //Destroy
-    kill_stack_double(&sd);
-    kill_stack_opor(&so);
+    kill_stack_nopor(&sd);
 }
 
 
 
 void test_stack_push_pop(void){
-    stack_double sd;
-    stack_opor so;
 
-    double ed = 343;
-    opor pr = {
-        .op = PLUS,
-        .order = 4
-    };
 
-    //Init
-    init_stack_double(&sd, MAX_INPUT);
-    init_stack_opor(&so, MAX_INPUT);
-
-    //Push
-    push_stack_double(&sd, ed);
-    push_stack_opor(&so, pr);
-
-    TEST_ASSERT(sd.top==1);
-    TEST_ASSERT(so.top==1);
-
-    //Pop
-    TEST_ASSERT(is_double_equal(ed, pop_stack_double(&sd)));
-    TEST_ASSERT(is_opor_equal(pr, pop_stack_opor(&so)));
-
-    TEST_ASSERT(sd.top==0);
-    TEST_ASSERT(so.top == 0);
-
-    //Kill
-    kill_stack_double(&sd);
-    kill_stack_opor(&so);
 }
-
 #endif

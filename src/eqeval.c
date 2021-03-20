@@ -4,7 +4,7 @@
 int pop_streq_item(char* eq_str, int* rpin, char* placeholder){
     char sym0 = eq_str[*rpin];
     int n_read = 0;
-    while (sym0 != '\n'){
+    while ((sym0 != '\n') ){
         if(ispunct(sym0)){ //If this site is an op
             placeholder[n_read] = sym0;
             placeholder[n_read+1] = '\0';
@@ -22,8 +22,10 @@ int pop_streq_item(char* eq_str, int* rpin, char* placeholder){
             placeholder[n_read] = '\0';
             return n_read;
         }
+
         else{
-            perror("Got Error Symbol");
+            break;
+            printf("Got Error Symbol: %s", &sym0);
             return -1;
         }
     }
@@ -65,71 +67,49 @@ double str2double(char* numstr){
     return atof(numstr);
 }
 
-int get_order(Operator op){
-        switch (op)
-    {
-    case PLUS:
-        return 0;
-        break;
-    case MINUS:
-        return 0;
-        break;
-    case MULT:
-        return 1;
-        break;
-    case DIV:
-        return 1;
-        break;
-    case LP:
-        return 2;
-        break;
-    case RP:
-        return  -2;
-        break;
-    default: {
-        perror("Error Order convertion");
-        raise(SIGINT);
-        break;
-    }
-    }
-}
 
-int is_parenthesis(Operator op){
-    if (op==LP)
-        return 1;
-    else if(op==RP)
-        return 1;
-    else 
-        return 0;
-}
 
 
 
 double eval_string(char* eqstr){
     char symbol[MAX_INPUT];
     char symbol2[MAX_INPUT];
+    stack_nopor st;
     Operator op;
+    opor pr; 
     double num;
+    double ans;
     int rpin=0;
-    int order_base = 0;
+    double first_number;
+    int is_first_number = 1;
+
+    init_stack_nopor(&st, MAX_INPUT);
 
     while(pop_streq_item(eqstr, &rpin, symbol) > 0){
 
-        // + - * / ( )
-        if (ispunct(symbol[0])){
+        //Update order base for ( )
+        if ((symbol[0]=='(') | (symbol[0]==')')){
             op = str2op(symbol);
-            
-            if (is_parenthesis(op))
-                order_base += get_order(op);
-            else 
-                pop_streq_item(eqstr, &rpin, symbol2);
-                //Todo
-
+            update_stack_orderbase(&st, op);
+            continue;
         }
 
-        else if (isdigit(symbol[0])){
+        // Meet a number
+        if (isdigit(symbol[0])){
             num = str2double(symbol);
+            push_stack_num(&st, num);
+            continue;
         }
 
-    }    
+        // Meet an operator: +-*/
+        if (ispunct(symbol[0])){
+           op = str2op(symbol);
+           push_stack_op(&st, op); //remember to convert to opor
+           continue;
+        }
+    }
+
+    ans = get_eq_answer(&st);
+    kill_stack_nopor(&st);
+    return ans;
 }

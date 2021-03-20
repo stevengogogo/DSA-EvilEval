@@ -13,6 +13,7 @@ TEST_LIST = {
     {"Stack push pop", test_stack_push_pop},
     {"String: Parse", test_read_string},
     {"Convert String to Operator / Numbers", test_str2op},
+    {"Evaluation", test_evaluation},
     {"Utility", test_utils},
     {NULL, NULL} // Terminate the test
 };
