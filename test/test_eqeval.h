@@ -1,7 +1,7 @@
 #ifndef TEST_eqeval_H
 #define TEST_eqeval_H
 
-#define MAX_INPUT 1000000
+#define MAX_INPUT 2000000
 
 #include "eqeval.h"
 

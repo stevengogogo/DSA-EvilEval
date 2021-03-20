@@ -9,7 +9,7 @@
 #include "utils.h"
 #include "stack.h"
 
-#define MAX_INPUT 1000000
+#define MAX_INPUT 2000000
 
 /** pop an operator or a number (in string) and move the pin forward.
  * @param eq_str The string of equation

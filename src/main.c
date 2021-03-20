@@ -5,8 +5,22 @@
 #include "utils.h"
 #include "eqeval.h"
 
-# define MAX_INPUT 1000000
+int main(){
+    char input_s[MAX_INPUT];
+    double ans;
 
+    while(  fgets(input_s, MAX_INPUT, stdin)  ){
+        if (strcmp(input_s, "\n") == 0 )
+            break;
+        ans = eval_string(input_s);
+        printf("%15.15f\n", ans);  
+    }
+
+    return 0;
+}
+
+
+/* For testing
 int main()
 {
     
@@ -42,3 +56,4 @@ int main()
 
     return 0;
 }
+*/
