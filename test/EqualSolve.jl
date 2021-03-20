@@ -2,7 +2,7 @@ using Pkg
 Pkg.activate("test/env")
 Pkg.instantiate()
 
-using Formatting
+using Printf 
 
 function solve_eq(string)
     return eval(Meta.parse(string))
@@ -21,7 +21,7 @@ function main(input_fn, output_fn)
             if length(eqs[i]) > 1
                 e = strip(eqs[i], ['\n'])
                 sol = solve_eq(e)
-                write(io, format(sol) )
+                write(io, @sprintf("%12.12f",sol) )
                 write(io, "\n")
             end
 
