@@ -1,3 +1,16 @@
+/**
+ * @file main.c
+ * @author Steven Shao-Ting Chiu (r07945001@ntu.edu.tw).
+ * @brief  See https://stevengogogo.github.io/DSA-EvilEval/ for details.
+ * @version 0.1
+ * @date 2021-04-01
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ * - Credit
+ *  - I did this project alone.
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdio.h>
